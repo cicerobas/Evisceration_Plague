@@ -10,11 +10,11 @@ class Entity(ABC):
         self.health = 0
         self.damage = 0
         self.animations = Animations(name)
-        self.surf = self.animations.get('Idle')[0]
-        self.rect = self.surf.get_rect(left=position[0], top=position[1])
+        self.surf = self.animations.get('Idle', False)[0]
+        self.rect = self.surf.get_rect(centerx=position[0], bottom=position[1])
 
     @abstractmethod
-    def move(self):
+    def move(self, direction: str):
         pass
 
     @abstractmethod

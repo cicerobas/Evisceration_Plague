@@ -21,6 +21,9 @@ class Game:
                 world = World(self.window)
                 world.run()
 
+            if menu_option == MENU_OPTIONS[1]:
+                running = False
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False

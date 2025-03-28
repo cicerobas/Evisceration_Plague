@@ -7,7 +7,7 @@ C_WHITE = (255, 255, 255)
 
 MENU_OPTIONS = ("New Game", "Exit")
 
-PLAYER_ANIMATIONS = {
+PLAYER_FRAME_DATA = {
     'Attack_1': (128, 128, 6),
     'Attack_2': (128, 128, 3),
     'Dead': (128, 128, 4),
@@ -18,10 +18,12 @@ PLAYER_ANIMATIONS = {
     'Shot': (128, 128, 12),
     'Walk': (128, 128, 8),
 }
-ZOMBIE_ANIMATIONS = {
+ZOMBIE_FRAME_DATA = {
     'Attack': (128, 128, 5),
     'Dead': (128, 128, 5),
     'Hurt': (128, 128, 4),
     'Idle': (128, 128, 6),
     'Walk': (128, 128, 10),
 }
+
+SPRITE_SCALE = 3

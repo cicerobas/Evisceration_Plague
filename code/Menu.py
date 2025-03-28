@@ -14,7 +14,9 @@ class Menu:
 
     def run(self):
         menu_option = 0
+        clock = pygame.time.Clock()
         while True:
+            clock.tick(30)
             self.window.blit(self.surf, self.rect)
             self.menu_text(70, "Evisceration", C_BLOOD_RED, (30, 30))
             self.menu_text(70, "Plague", C_BLOOD_RED, (30, 70))

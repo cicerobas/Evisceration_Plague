@@ -27,7 +27,5 @@ class Animations:
             split_frames = split_sprites(sprite_sheet, self.animations[animation])
             self.animation_frames.update({animation: split_frames})
 
-    def get(self, name: str, flip: bool) -> list[Surface]:
-        if flip:
-            return [pygame.transform.flip(frame, True, False) for frame in self.animation_frames.get(name)]
-        return self.animation_frames.get(name)
+    def get_frames(self, name: str, flip: bool) -> list[Surface]:
+        return [pygame.transform.flip(frame, flip, False) for frame in self.animation_frames.get(name)]

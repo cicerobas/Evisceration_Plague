@@ -3,12 +3,13 @@ from pygame import Surface
 
 from code.Constants import WIN_WIDTH
 from code.EntityFactory import EntityFactory
+from code.Scenery import Scenery
 
 
 class World:
     def __init__(self, window: Surface):
         self.window = window
-
+        self.scenery = Scenery()
         self.player_animation = pygame.sprite.GroupSingle()
         self.player = EntityFactory.get_entity("Player")
         self.player_animation.add(self.player)
@@ -16,9 +17,8 @@ class World:
     def run(self):
         running = True
         clock = pygame.time.Clock()
-
+        self.scenery.draw(self.window)
         while running:
-
             if self.player.shooting:
                 self.player.update_action(5)
             elif self.player.reloading:
@@ -55,7 +55,7 @@ class World:
                     if event.key == pygame.K_d:
                         self.player.set_moving(False, False)
 
-            self.window.fill((128, 128, 128))
+            self.scenery.update(self.window, self.player.speed, self.player.direction)
             self.player_animation.draw(self.window)
             self.player_animation.update()
 

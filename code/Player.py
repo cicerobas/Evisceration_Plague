@@ -1,6 +1,6 @@
 import pygame
 
-from code.Constants import ANIMATION_COOLDOWN, INITIAL_AMMO, WEAPON_CAPACITY
+from code.Constants import ANIMATION_COOLDOWN, INITIAL_AMMO, WEAPON_CAPACITY, PLAYER_WALK_SPEED, PLAYER_RUN_SPEED
 from code.Entity import Entity
 
 
@@ -45,7 +45,16 @@ class Player(Entity):
 
     def update_action(self, new_action):
         if new_action != self.action:
-            self.running = new_action == 2
+            match new_action:
+                case 1:
+                    self.speed = PLAYER_WALK_SPEED
+                case 2:
+                    self.speed = PLAYER_RUN_SPEED
+                    self.running = True
+                case _:
+                    self.speed = 0
+                    self.running = False
+
             self.action = new_action
             self.animation_frames = self.animations.get_frames(self.animation_options[self.action],
                                                                self.direction == "L")
@@ -54,6 +63,7 @@ class Player(Entity):
 
     def set_moving(self, is_moving: bool, direction: str = ""):
         if is_moving:
+            self.speed = PLAYER_RUN_SPEED if self.running else PLAYER_WALK_SPEED
             self.moving = True
             self.direction = direction
         else:
@@ -85,4 +95,4 @@ class Player(Entity):
                 self.weapon_ammo = self.ammo
                 self.ammo = 0
 
-        # print(f'AMMO {self.weapon_ammo}/{self.ammo}')
+        print(f'AMMO {self.weapon_ammo}/{self.ammo}')

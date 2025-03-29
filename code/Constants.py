@@ -1,6 +1,10 @@
 WIN_WIDTH = 960
 WIN_HEIGHT = 540
 
+ANIMATION_COOLDOWN = 100
+INITIAL_AMMO = 10
+WEAPON_CAPACITY = 4
+
 # COLORS
 C_BLOOD_RED = (136, 8, 8)
 C_WHITE = (255, 255, 255)
@@ -13,7 +17,7 @@ PLAYER_FRAME_DATA = {
     'Dead': (128, 128, 4),
     'Hurt': (128, 128, 2),
     'Idle': (128, 128, 6),
-    'Recharge': (128, 128, 12),
+    'Reload': (128, 128, 12),
     'Run': (128, 128, 8),
     'Shot': (128, 128, 12),
     'Walk': (128, 128, 8),

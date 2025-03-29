@@ -22,6 +22,7 @@ class Player(Entity):
         self.attack_option = 3
         self.reloading = False
         self.shooting = False
+        self.running = False
         self.ammo = INITIAL_AMMO
         self.weapon_ammo = WEAPON_CAPACITY
 
@@ -44,6 +45,7 @@ class Player(Entity):
 
     def update_action(self, new_action):
         if new_action != self.action:
+            self.running = new_action == 2
             self.action = new_action
             self.animation_frames = self.animations.get_frames(self.animation_options[self.action],
                                                                self.direction == "L")

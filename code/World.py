@@ -18,6 +18,7 @@ class World:
         clock = pygame.time.Clock()
 
         while running:
+
             if self.player.shooting:
                 self.player.update_action(5)
             elif self.player.reloading:
@@ -25,7 +26,8 @@ class World:
             elif self.player.attacking:
                 self.player.update_action(self.player.attack_option)
             elif self.player.moving:
-                self.player.update_action(1)
+                is_player_running = pygame.key.get_mods() & pygame.KMOD_SHIFT
+                self.player.update_action(2 if is_player_running else 1)
             else:
                 self.player.update_action(0)
 
@@ -49,9 +51,9 @@ class World:
 
                 if event.type == pygame.KEYUP:
                     if event.key == pygame.K_a:
-                        self.player.set_moving(False)
+                        self.player.set_moving(False, False)
                     if event.key == pygame.K_d:
-                        self.player.set_moving(False)
+                        self.player.set_moving(False, False)
 
             self.window.fill((128, 128, 128))
             self.player_animation.draw(self.window)
